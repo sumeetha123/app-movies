@@ -1,0 +1,24 @@
+.header-A {
+    background-color: black;
+    height: 30px;
+    padding-top: 20px;
+    padding-right: 10px;
+    padding-bottom: 30px;
+    padding-left: 10px;
+
+}
+
+.login-but {
+    float: right;
+}
+
+.app-logo {
+    animation: app-logo-spin infinite 8s linear;
+    height: 35px;
+    background: #ff7f7f;
+ }
+ 
+ @keyframes app-logo-spin {
+    from { transform: scaleX(-1); }
+ }
+ 
