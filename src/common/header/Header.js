@@ -5,11 +5,12 @@ import logo from '../../assets/logo.svg';
 import Modal from 'react-modal';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import TableContainer from '@material-ui/core/TableContainer';
+//import TableContainer from '@material-ui/core/TableContainer';
 import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
 import  InputLabel  from '@material-ui/core/InputLabel';
-import  Input  from '@material-ui/core/Input';
+import  Input  from '@material-ui/core/Input';  
+import PropTypes from 'prop-types';
 
 const CustomStyles = {
     content: {
@@ -23,13 +24,22 @@ const CustomStyles = {
 
 };
 
+
+
 const TabContainer = function(props) {
     return(
-        <Typography component="div" style={{padding: 0, textAlign: 'center'}}>
+        <Typography component="div" style={{padding: 0, textAlign: 'center' }}>
             {props.children}
         </Typography>
     );
 }
+
+
+TabContainer.propTypes = {
+    children: PropTypes.node.isRequired
+}
+
+
 
 class Header extends Component {
     constructor()
@@ -38,7 +48,7 @@ class Header extends Component {
         this.state = {
             modalIsOpen: false,
             value: 0
-        }
+        };
     }
 
     openModalHandler = () => {
@@ -49,7 +59,7 @@ class Header extends Component {
         this.setState({ modalIsOpen: false});
     }
 
-    tabChangeHandler = (event,value) => {
+    tabChangeHandler = (event, value) => {
         this.setState({value});
     }
 
@@ -72,20 +82,22 @@ class Header extends Component {
                         <Tab label="Login"/>
                         <Tab label="Register"/>
                     </Tabs>
-                    <TableContainer>
-                        <FormControl required>
-                            <InputLabel htmlFor="userName"> Username </InputLabel>
-                            <Input id="username" type="text" />
-                        </FormControl>
-                        <br /><br />
-                        <FormControl required>
-                            <InputLabel htmlFor="password">Password</InputLabel>
-                            <Input id="password" type="Password"  />
-                        </FormControl>
-                        <br /><br />
-                        <Button variant="contained" color="primary">LOGIN</Button>
-                    </TableContainer>
-
+                    {this.state.value === 0 &&
+                        <TabContainer>
+                            <FormControl required>
+                                <InputLabel htmlFor="userName"> UserName </InputLabel>
+                                <Input id="username" type="text" />             
+                            </FormControl>
+                            <br /><br />
+                            <FormControl required>
+                                <InputLabel htmlFor="password"> Password </InputLabel>
+                                <Input id="password" type="text" />             
+                            </FormControl>
+                            <br /><br />
+                            <Button variant="contained" color="primary">LOGIN</Button>
+                        </TabContainer>
+                    }        
+                           
                 </Modal>
             </div>
         )
