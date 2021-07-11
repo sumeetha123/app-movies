@@ -4,6 +4,7 @@ import Header from '../../common/header/Header';
 import Typography  from '@material-ui/core/Typography';
 import './BookShow.css';
 import Home from '../home/Home';
+import Confirmation from '../conformation Page/Confirmation';
 import language from '../../common/language';
 import location from '../../common/location';
 import showDate from '../../common/showDate';
@@ -70,6 +71,8 @@ class BookShow extends Component {
         this.state.showDate === "" ? this.setState({ reqShowDate: "dispBlock" }) : this.setState({ reqShowDate: "dispNone" });
         this.state.showTime === "" ? this.setState({ reqShowTime: "dispBlock" }) : this.setState({ reqShowTime: "dispNone" });
         this.state.tickets === 0 ? this.setState({ reqTickets: "dispBlock" }) : this.setState({ reqTickets: "dispNone" });
+
+        ReactDOM.render(<Confirmation bookingSummary={this.state} />, document.getElementById('root'));
     }
 
 
@@ -82,7 +85,7 @@ class BookShow extends Component {
                         &#60; Back to Details
                     </Typography>
 
-                    <Card className="cardStyle">
+                    <Card className="cardsStyle">
                         <CardContent>
                             <Typography variant="headline" component="h2">
                                 BOOK SHOW
